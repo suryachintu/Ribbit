@@ -10,4 +10,7 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="sign_up_button_label">Sign Up</string>
     <string name="email_hint">email</string>
+    <string name="sign_up_error_message">Wrong Credentials...</string>
+    <string name="sign_up_error_title">Oops...!</string>
+    <string name="ok">OK</string>
 </resources>
