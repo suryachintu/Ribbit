@@ -15,4 +15,5 @@
     <string name="ok">OK</string>
     <string name="action_logout">Logout</string>
     <string name="empty_inbox_label">No new messages</string>
+    <string name="empty_friends_label">Add friends</string>
 </resources>

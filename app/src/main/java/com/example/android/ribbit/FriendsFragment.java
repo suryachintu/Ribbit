@@ -9,21 +9,21 @@ import android.view.ViewGroup;
 /**
  * Created by surya on 06-06-2016.
  */
-public class InboxFragment extends Fragment {
+public class FriendsFragment extends Fragment {
 
-    public InboxFragment(){
+    public FriendsFragment(){
 
     }
 
-    public static InboxFragment newInstance() {
-        InboxFragment fragment = new InboxFragment();
+    public static FriendsFragment newInstance() {
+        FriendsFragment fragment = new FriendsFragment();
         return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_inbox, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
 //            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
 //            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
         return rootView;
