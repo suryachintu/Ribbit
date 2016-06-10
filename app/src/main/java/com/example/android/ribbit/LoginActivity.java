@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.ribbit.Constants.Constants;
+import com.example.android.ribbit.Constants.User;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -36,9 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmail = (EditText)findViewById(R.id.emailField);
         mLoginButton = (Button)findViewById(R.id.loginButton);
         pg_bar = (ProgressBar)findViewById(R.id.pg_bar);
-        //get username and Password
-       String email = mEmail.getText().toString();
-       String password = mPassword.getText().toString();
+
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void valiDateUser() {
 
-        Firebase ref = new Firebase(Constants.FIREBASE_URL);
+        final Firebase ref = new Firebase(Constants.FIREBASE_URL);
         setProgressBarIndeterminateVisibility(true);
         pg_bar.setVisibility(ProgressBar.VISIBLE);
         ref.authWithPassword(mEmail.getText().toString(), mPassword.getText().toString(), new Firebase.AuthResultHandler() {
@@ -79,6 +78,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthenticated(AuthData authData) {
                 setProgressBarIndeterminateVisibility(false);
                 pg_bar.setVisibility(ProgressBar.INVISIBLE);
+
+                //save users data
+
+                if (getIntent().getStringExtra("mUsername")!=null){
+                    String mUsername = getIntent().getStringExtra("mUsername");
+                    User mUser = new User(mUsername,mEmail.getText().toString());
+                   /* Map<String,String> userData = new HashMap<String, String>();
+                    userData.put("username",mUsername);
+                    userData.put("email",mEmail.getText().toString());*/
+                    ref.child("users").push().setValue(mUser);
+                }
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);

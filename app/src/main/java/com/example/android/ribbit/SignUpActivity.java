@@ -12,7 +12,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.android.ribbit.Constants.Constants;
-import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
@@ -62,16 +61,18 @@ public class SignUpActivity extends AppCompatActivity {
     private void newUser() {
         //create a new user account
         prg_bar.setVisibility(ProgressBar.VISIBLE);
-        Firebase ref = new Firebase(Constants.FIREBASE_URL);
-        AuthData auth = ref.getAuth();
+        final Firebase ref = new Firebase(Constants.FIREBASE_URL);
         ref.createUser(mEmail.getText().toString(), mPassword.getText().toString()
                 , new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
                 prg_bar.setVisibility(ProgressBar.INVISIBLE);
+
+
                 Toast.makeText(SignUpActivity.this, "Successfully created user account with uid: ",
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SignUpActivity.this,LoginActivity.class);
+                intent.putExtra("mUsername",mUserName.getText().toString());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
