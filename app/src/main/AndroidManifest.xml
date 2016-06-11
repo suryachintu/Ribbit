@@ -40,11 +40,13 @@
             android:name=".EditFriendsActivity"
             android:label="@string/title_activity_edit_friends"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.ribbit.MainActivity"/>
+        </activity>
+        <activity android:name=".ChatActivity">
         </activity>
     </application>
 

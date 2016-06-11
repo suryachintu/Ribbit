@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.ribbit.Constants.Constants;
-import com.example.android.ribbit.Constants.User;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -83,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (getIntent().getStringExtra("mUsername")!=null){
                     String mUsername = getIntent().getStringExtra("mUsername");
-                    User mUser = new User(mUsername,mEmail.getText().toString());
+                    User mUser = new User(mUsername,mEmail.getText().toString(),null);
                    /* Map<String,String> userData = new HashMap<String, String>();
                     userData.put("username",mUsername);
                     userData.put("email",mEmail.getText().toString());*/

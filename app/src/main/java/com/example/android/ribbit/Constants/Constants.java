@@ -8,5 +8,7 @@ import com.example.android.ribbit.BuildConfig;
 public class Constants {
     public static final String FIREBASE_URL = BuildConfig.UNIQUE_FIREBASE_ROOT_URL;
     private static final String USERS = "users";
+    private static final String RELATION = "relation";
     public static final String FIREBASE_URL_USER = FIREBASE_URL + USERS;
+    public static final String FIREBASE_URL_USER_RELATION = FIREBASE_URL + USERS + RELATION;
 }
